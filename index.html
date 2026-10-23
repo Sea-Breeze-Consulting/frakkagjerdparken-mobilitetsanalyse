@@ -1830,7 +1830,12 @@ html&gt;body{padding:0}&lt;/style&gt;
     #frakkagjerd-mobilitet .head{font-weight:500}
     #frakkagjerd-mobilitet .yes{color:var(--green)}
     #frakkagjerd-mobilitet .later{color:var(--orange)}
-    @media(max-width:760px){#frakkagjerd-mobilitet .grid{grid-template-columns:1fr}#frakkagjerd-mobilitet .metrics{grid-template-columns:1fr 1fr}#frakkagjerd-mobilitet .matrix{grid-template-columns:110px repeat(3,minmax(100px,1fr));font-size:12px;overflow:auto}#frakkagjerd-mobilitet .top{padding-right:0}}
+    #frakkagjerd-mobilitet .access-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    #frakkagjerd-mobilitet .access-block{display:grid;gap:6px}
+    #frakkagjerd-mobilitet .access-value{font-size:1.35em;font-weight:500}
+    #frakkagjerd-mobilitet .result-table td:nth-child(n+2),#frakkagjerd-mobilitet .result-table th:nth-child(n+2){text-align:right}
+    #frakkagjerd-mobilitet .source-list{display:flex;gap:14px;flex-wrap:wrap}
+    @media(max-width:760px){#frakkagjerd-mobilitet .grid{grid-template-columns:1fr}#frakkagjerd-mobilitet .metrics{grid-template-columns:1fr 1fr}#frakkagjerd-mobilitet .matrix{grid-template-columns:110px repeat(3,minmax(100px,1fr));font-size:12px;overflow:auto}#frakkagjerd-mobilitet .access-grid{grid-template-columns:1fr}#frakkagjerd-mobilitet .top{padding-right:0}}
   &lt;/style&gt;
 
   &lt;div class=&quot;top&quot;&gt;
@@ -1881,15 +1886,16 @@ html&gt;body{padding:0}&lt;/style&gt;
         &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Arbeidsplassklynger&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Regionalt faggrunnlag identifisert&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;M-1941 og V712&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Metodisk ramme avklart&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Entur – holdeplasser og avganger&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Fjellhaug 95 m og Frakkagjerd E134 313 m i luftlinje&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot pending&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Entur – dør-til-dør-reisetider&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Må beregnes mot arbeidsplassklyngene&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot pending&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Sykkelnett og reisetider&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;NVDB/OSM-nett må kvalitetssikres&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
-        &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot pending&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;SSB-rutenett arbeidsplasser&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Må hentes for kvantitative isokroner&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Entur – dør-til-dør-reisetider&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Beregnet mot sju arbeidsplassklynger&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Sykkelnett og reisetider&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;OSM-nett via Entur, vanlig sykkel og elsykkel&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;SSB-rutenett arbeidsplasser&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;2026, 250 m-ruter, aggregert i 1 km klyngeomland&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot pending&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;NVDB-kvalitetskontroll&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Fysisk standard og manglende sykkellenker må kontrolleres&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
       &lt;/div&gt;&lt;/section&gt;
       &lt;section class=&quot;section&quot;&gt;&lt;h2&gt;Kollektivdekning – foreløpig kontroll&lt;/h2&gt;
         &lt;div class=&quot;status&quot;&gt;
           &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Fjellhaug&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;95 m luftlinje · nærmest, men avgangene i kontrollperioden var skoleruter&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
           &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Frakkagjerd E134&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;313 m luftlinje · linje 206, 243, 245, 246 og 260 i morgenperioden&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
-          &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot pending&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Fem minutters gange&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Sannsynlig nær E134-stoppet, men må verifiseres langs faktisk gangnett og kryssinger&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&quot;status-row&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;div&gt;&lt;strong&gt;Gangtid til relevant stopp&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;text-muted&quot;&gt;Entur beregner 348–501 m og ca. 4,8–7,3 min, avhengig av retning/holdeplasside&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
       &lt;/section&gt;
       &lt;section class=&quot;section&quot;&gt;&lt;h2&gt;Utpendling fra Tysvær&lt;/h2&gt;&lt;div class=&quot;bars&quot; aria-label=&quot;Utpendling fra Tysvær i 2025&quot;&gt;
@@ -1915,17 +1921,28 @@ html&gt;body{padding:0}&lt;/style&gt;
   &lt;/section&gt;
 
   &lt;section class=&quot;section&quot;&gt;
-    &lt;h2&gt;Metodisk kjede for neste beregning&lt;/h2&gt;
-    &lt;svg viewBox=&quot;0 0 960 128&quot; role=&quot;img&quot; aria-label=&quot;Metodisk kjede fra datakilder til beslutning&quot;&gt;
-      &lt;defs&gt;&lt;marker id=&quot;arrow-fp&quot; viewBox=&quot;0 0 10 10&quot; refX=&quot;9&quot; refY=&quot;5&quot; markerWidth=&quot;6&quot; markerHeight=&quot;6&quot; orient=&quot;auto-start-reverse&quot;&gt;&lt;path d=&quot;M0 0L10 5L0 10z&quot; fill=&quot;var(--border)&quot;/&gt;&lt;/marker&gt;&lt;/defs&gt;
-      &lt;g text-anchor=&quot;middle&quot;&gt;&lt;rect class=&quot;node&quot; x=&quot;8&quot; y=&quot;25&quot; width=&quot;150&quot; height=&quot;60&quot; rx=&quot;8&quot;/&gt;&lt;text x=&quot;83&quot; y=&quot;49&quot;&gt;SSB&lt;/text&gt;&lt;text x=&quot;83&quot; y=&quot;67&quot; class=&quot;muted&quot;&gt;pendling + arbeidsplasser&lt;/text&gt;
-      &lt;rect class=&quot;node&quot; x=&quot;207&quot; y=&quot;25&quot; width=&quot;150&quot; height=&quot;60&quot; rx=&quot;8&quot;/&gt;&lt;text x=&quot;282&quot; y=&quot;49&quot;&gt;Entur&lt;/text&gt;&lt;text x=&quot;282&quot; y=&quot;67&quot; class=&quot;muted&quot;&gt;reisetid og frekvens&lt;/text&gt;
-      &lt;rect class=&quot;node&quot; x=&quot;406&quot; y=&quot;25&quot; width=&quot;150&quot; height=&quot;60&quot; rx=&quot;8&quot;/&gt;&lt;text x=&quot;481&quot; y=&quot;49&quot;&gt;NVDB / OSM&lt;/text&gt;&lt;text x=&quot;481&quot; y=&quot;67&quot; class=&quot;muted&quot;&gt;gang- og sykkelnett&lt;/text&gt;
-      &lt;rect class=&quot;node&quot; x=&quot;605&quot; y=&quot;25&quot; width=&quot;150&quot; height=&quot;60&quot; rx=&quot;8&quot;/&gt;&lt;text x=&quot;680&quot; y=&quot;49&quot;&gt;Tilgjengelighet&lt;/text&gt;&lt;text x=&quot;680&quot; y=&quot;67&quot; class=&quot;muted&quot;&gt;30 / 45 / 60 minutter&lt;/text&gt;
-      &lt;rect class=&quot;node&quot; x=&quot;804&quot; y=&quot;25&quot; width=&quot;150&quot; height=&quot;60&quot; rx=&quot;8&quot;/&gt;&lt;text x=&quot;879&quot; y=&quot;49&quot;&gt;Konsekvens&lt;/text&gt;&lt;text x=&quot;879&quot; y=&quot;67&quot; class=&quot;muted&quot;&gt;trafikk, utslipp, tiltak&lt;/text&gt;&lt;/g&gt;
-      &lt;path class=&quot;route&quot; d=&quot;M158 55H207 M357 55H406 M556 55H605 M755 55H804&quot; marker-end=&quot;url(#arrow-fp)&quot;/&gt;
-    &lt;/svg&gt;
-    &lt;p class=&quot;text-small text-muted&quot;&gt;Entur-oppslag 23.10.2026 for tirsdag 27.10.2026 kl. 05–10. Fem minutter brukes som en første dekningsindikator, men skal beregnes langs faktisk gangnett. SVV angir at 400 m luftlinje omtrent kan tilsvare fem minutters gange, mens V123 viser stor variasjon med ganghastighet. Tysvær planID 202401 oppgir ca. 5 km og under 15 minutter med elsykkel mellom Frakkagjerd og Aksdal. Trafikktallene er beregnet tillegg, ikke samlet trafikk.&lt;/p&gt;
+    &lt;h2&gt;Beregnet tilgjengelighet til arbeidsplasser&lt;/h2&gt;
+    &lt;div class=&quot;access-grid&quot;&gt;
+      &lt;div class=&quot;access-block&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;Kollektiv innen 30 min&lt;/span&gt;&lt;span class=&quot;access-value&quot;&gt;ca. 16 700 arbeidsplasser&lt;/span&gt;&lt;span class=&quot;text-small&quot;&gt;Aksdal, Haugesund sentrum, Raglamyr og Norheim&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;access-block&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;Kollektiv innen 45 min&lt;/span&gt;&lt;span class=&quot;access-value&quot;&gt;ca. 17 600 arbeidsplasser&lt;/span&gt;&lt;span class=&quot;text-small&quot;&gt;Som over, inkludert Kårstø&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;access-block&quot;&gt;&lt;span class=&quot;text-muted&quot;&gt;Kollektiv innen 60 min&lt;/span&gt;&lt;span class=&quot;access-value&quot;&gt;ca. 18 900 arbeidsplasser&lt;/span&gt;&lt;span class=&quot;text-small&quot;&gt;Som over, inkludert Ølen; Kopervik ligger på ca. 61 min&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;table-responsive&quot;&gt;
+      &lt;table class=&quot;table table-sm result-table&quot;&gt;
+        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Arbeidsplassklynge&lt;/th&gt;&lt;th&gt;SSB-ansatte innen 1 km&lt;/th&gt;&lt;th&gt;Kollektiv til kl. 08&lt;/th&gt;&lt;th&gt;Bytter&lt;/th&gt;&lt;th&gt;Retur etter kl. 16&lt;/th&gt;&lt;th&gt;Sykkel&lt;/th&gt;&lt;th&gt;Elsykkel&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;Aksdal&lt;/td&gt;&lt;td&gt;913&lt;/td&gt;&lt;td&gt;9 min&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;9 min&lt;/td&gt;&lt;td&gt;20 min&lt;/td&gt;&lt;td&gt;15 min&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;Haugesund sentrum&lt;/td&gt;&lt;td&gt;9 047&lt;/td&gt;&lt;td&gt;29 min&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;20 min&lt;/td&gt;&lt;td&gt;52 min&lt;/td&gt;&lt;td&gt;40 min&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;Raglamyr&lt;/td&gt;&lt;td&gt;3 669&lt;/td&gt;&lt;td&gt;21 min&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;14 min&lt;/td&gt;&lt;td&gt;53 min&lt;/td&gt;&lt;td&gt;39 min&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;Norheim&lt;/td&gt;&lt;td&gt;3 047&lt;/td&gt;&lt;td&gt;23 min&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;25 min&lt;/td&gt;&lt;td&gt;60 min&lt;/td&gt;&lt;td&gt;45 min&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;Kårstø&lt;/td&gt;&lt;td&gt;943&lt;/td&gt;&lt;td&gt;36 min&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;26 min&lt;/td&gt;&lt;td&gt;112 min&lt;/td&gt;&lt;td&gt;82 min&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;Ølen&lt;/td&gt;&lt;td&gt;1 289&lt;/td&gt;&lt;td&gt;55 min&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;Ikke funnet etter kl. 16&lt;/td&gt;&lt;td&gt;190 min&lt;/td&gt;&lt;td&gt;138 min&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;Kopervik&lt;/td&gt;&lt;td&gt;2 020&lt;/td&gt;&lt;td&gt;61 min&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;60 min&lt;/td&gt;&lt;td&gt;126 min&lt;/td&gt;&lt;td&gt;93 min&lt;/td&gt;&lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;text-small text-muted&quot;&gt;Kollektiv: Entur Journey Planner, tirsdag 27.10.2026, beste funne reise med ankomst senest kl. 08 og retur etter kl. 16. Reisetiden er fra faktisk avgang til ankomst; nødvendig ventetid før avgang kommer i tillegg. Sykkel: Enturs OSM-baserte nett, standardhastighet 5,0 m/s. Elsykkel: samme nett med 6,94 m/s (25 km/t) og sikker ruteoptimalisering. Arbeidsplasser: SSB Bedrifter på rutenett 2026, ansatte i 250 m-ruter med sentrum innen 1 km av valgt klyngepunkt. Klyngesummen er en dekningsindikator, ikke en full regional isokron og kan utelate arbeidsplasser mellom de undersøkte klyngene.&lt;/p&gt;
+    &lt;div class=&quot;source-list text-small&quot;&gt;&lt;a href=&quot;https://developer.entur.no/docs/open-services/journey-planner&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;Entur Journey Planner&lt;/a&gt;&lt;a href=&quot;https://kart.ssb.no&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;SSB kartdata&lt;/a&gt;&lt;a href=&quot;https://dokument.geonorge.no/produktark/bedrifter-p%C3%A5-rutenett/18.11.2025/bedrifter-p%C3%A5-rutenett.pdf&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;Produktark: Bedrifter på rutenett&lt;/a&gt;&lt;a href=&quot;https://www.vegvesen.no/fag/teknologi/nasjonal-vegdatabank/hente-ut-og-se-pa-data-i-nasjonal-vegdatabank/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;NVDB&lt;/a&gt;&lt;/div&gt;
   &lt;/section&gt;
 
   &lt;script&gt;
