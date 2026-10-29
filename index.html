@@ -130,4 +130,48 @@ if(vehicleMethodSection)vehicleMethodSection.innerHTML=`<h2>Metode for kjøretø
 
 const accessFirstSection=accessPanel.querySelector('.section');
 if(accessFirstSection&&!document.getElementById('schoolServiceSection'))accessFirstSection.insertAdjacentHTML('afterend',`<section class="section school-service" id="schoolServiceSection"><h2>Skoleavganger og skoleruter</h2><p>Fjellhaug og Rundhaug betjenes av linje 246 i det undersøkte tidsrommet. Enkelte avganger går bare på skoledager. Dette er et relevant tilbud for skolereiser, men skal ikke likestilles med et ordinært, høyfrekvent kollektivtilbud.</p><table class="table"><thead><tr><th>Holdeplass</th><th>Gangrute</th><th>Registrert tilbud</th><th>Vurdering</th></tr></thead><tbody><tr><td>Fjellhaug</td><td>98 m · ca. 1 min</td><td>Linje 246</td><td>Begrenset og skoleavhengig</td></tr><tr><td>Rundhaug</td><td>171 m · ca. 2 min</td><td>Linje 246</td><td>Begrenset og skoleavhengig</td></tr></tbody></table><p class="fine">Linje 246 følger korridoren Nedstrand–Skjoldastraumen–Aksdal–Haugesund. Rutetabellen omfatter skoleavhengige avganger og stopp ved blant annet Frakkagjerd ungdomsskole, Tveit videregående skole, Vardafjell videregående skole og Karmsund videregående skole på ulike avganger. Dette betyr ikke at alle skolene kan nås direkte fra begge lokalholdeplassene. Retning, avgang og eventuell overgang må kontrolleres i Entur/Kolumbus for aktuelt skoletidspunkt. Egne SK-ruter kan endres på kort varsel, og skoleelever har fortrinn.</p><p class="fine"><a href="https://www.kolumbus.no/reise/rutetabeller/buss/alle-bussruter/246/" target="_blank" rel="noopener">Kolumbus rute 246</a> · <a href="https://www.kolumbus.no/aktuelt/nyttig-a-vite-om-skoleruter/" target="_blank" rel="noopener">Kolumbus om skoleruter og skoleavganger</a></p></section>`);
+</script>
+<style>
+.active-production{border-left:4px solid var(--blue)}
+.active-production .metric-grid{margin:10px 0 8px}
+.active-production .metric.walk{border-left:4px solid var(--green)}
+.active-production .metric.cycle{border-left:4px solid var(--blue)}
+.active-production .metric b{font-variant-numeric:tabular-nums}
+.method-prose p{margin:0 0 9px}
+.method-prose p:last-child{margin-bottom:0}
+</style>
+<script>
+const primaryMetricGrid=projectPanel.querySelector('.metric-grid');
+const activeProduction=document.createElement('section');
+activeProduction.id='activeProduction';
+activeProduction.className='section active-production hide';
+activeProduction.innerHTML=`<h2>Indikativ turproduksjon for gange og sykkel</h2><div class="metric-grid"><div class="metric walk"><b id="walkTrips">–</b><span>Personreiser til fots per døgn</span></div><div class="metric cycle"><b id="cycleTrips">–</b><span>Personreiser med sykkel per døgn</span></div></div><p class="fine">Boligrelatert scenario basert på RVU Haugalandet 2018: 2,5 personreiser per person og døgn, 2,46 personer per husholdning, 10 % gange og 2 % sykkel. Dette er ikke tellinger og ikke tillegg til ÅDT.</p>`;
+primaryMetricGrid.insertAdjacentElement('afterend',activeProduction);
+
+const showWithActiveProduction=show;
+show=function(k){
+  showWithActiveProduction(k);
+  const values=k==='bt1'?{walk:'ca. 15',cycle:'ca. 3'}:k==='bt2'?{walk:'ca. 74',cycle:'ca. 15'}:null;
+  activeProduction.classList.toggle('hide',!values);
+  if(values){walkTrips.textContent=values.walk;cycleTrips.textContent=values.cycle}
+};
+
+const localScenarioSection=[...methodSections.querySelectorAll('.section')].find(section=>section.querySelector('h2')?.textContent.trim()==='Lokalt scenario for gange og sykkel');
+if(localScenarioSection){
+  const paragraphs=localScenarioSection.querySelectorAll('p');
+  paragraphs[0].innerHTML='<b>RVU Haugalandet 2018</b> er kildegrunnlaget for faktorene: 2,5 personreiser per person og døgn, 2,46 personer per husholdning i Tysvær, 10 % til fots og 2 % med sykkel. De samme faktorene er benyttet i Asplan Viaks trafikknotat for Aksdal S1 + S1a (2021).';
+}
+
+const hierarchySection=[...methodSections.querySelectorAll('.section')].find(section=>section.querySelector('h2')?.textContent.trim()==='Metodehierarki');
+if(hierarchySection){
+  hierarchySection.classList.add('method-prose');
+  const list=hierarchySection.querySelector('ol');
+  if(list)list.outerHTML='<p><b>Lokale registreringer:</b> Norconsult brukes for makstimer, retningsfordeling og kontroll av lokalvegnettet.</p><p><b>Turproduksjon for kjøretøy:</b> SVV V713 brukes som erfaringstall, med Norconsult og Byggforsk som lokale og supplerende anvendelser.</p><p><b>Trafikkdata og omregning:</b> SVV V714 brukes for representativitet og omregning av korttidstellinger.</p><p><b>Gange og sykkel:</b> RVU Haugalandet 2018 er kilde til reisemiddelfaktorene. Asplan Viaks trafikknotat dokumenterer en relevant anvendelse av dette lokale grunnlaget i Tysvær.</p>';
+}
+
+if(vehicleMethodSection){
+  const methodParagraphs=vehicleMethodSection.querySelectorAll('p');
+  if(methodParagraphs[1])methodParagraphs[1].innerHTML='<b>RVU Haugalandet 2018</b> er det lokale kildegrunnlaget for personreise- og reisemiddelfaktorene. Undersøkelsen oppgir 2,5 personreiser per person og døgn, 2,46 personer per husholdning og 71 % bilførerandel i Tysvær. De samme faktorene er benyttet i Asplan Viaks trafikknotat for Aksdal S1 + S1a (2021). Omregnet tilsvarer dette om lag 4,4 bilturer per bolig. Verktøyet beholder 3,5 som basis for kjøretøy fordi Norconsult og Byggforsk bruker denne satsen, mens RVU-beregningen synliggjør lokal usikkerhet og gir faktorene for gange og sykkel.';
+}
+show(localStorage.getItem('scenario')||'now');
 </script></body></html>
